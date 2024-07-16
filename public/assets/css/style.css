@@ -1,0 +1,35 @@
+/* edit data tables start */
+.dt-container .dt-length ,
+.dt-container .dt-info{
+    margin: 5px 0 10px 10px !important;
+ }
+ .dt-container .dt-search ,
+.dt-container .dt-paging{
+    margin: 5px 10px 10px 0 !important;
+ }
+ .outline-0 {
+    outline: 0!important;
+ }
+ table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before {
+    content: "\f077" !important;
+    /* content: "\f078"; */
+    transition: .3s all ease-in-out;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    font-family: "Font Awesome 6 Free" !important;
+ }
+ table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after, table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
+    content: "\f078" !important;
+    transition: .3s all ease-in-out;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    font-family: "Font Awesome 6 Free" !important;
+ }
+ table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after, table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
+    opacity: 1 !important;
+    color: var(--bs-primary);
+ }
+ table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after, table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
+    top: 60% !important;
+ }
+/* edit data tables end */

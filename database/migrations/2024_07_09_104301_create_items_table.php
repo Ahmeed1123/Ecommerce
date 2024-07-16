@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+
+            $table->decimal('amount');
+
+            $table->string('title');
+            $table->string('description');
+            $table->string('image_url');
+
+
             $table->timestamps();
         });
     }

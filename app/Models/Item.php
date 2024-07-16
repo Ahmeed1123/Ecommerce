@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['id','user_id', 'amount', 'title', 'description', 'image_url'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
 }
+
