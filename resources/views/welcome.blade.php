@@ -6,8 +6,8 @@
                 <div class="btns ms-auto">
                     @auth
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalLong">
-                        <i class='bx bx-plus fs-3'></i>
-                                              </button>
+                            <i class='bx bx-plus fs-3'></i>
+                        </button>
                     @else
                         {{-- <a href="{{ route('item.create') }}" class="btn btn-primary">Create item</a> --}}
                     @endauth
@@ -29,7 +29,7 @@
                         </p>
 
                         <div class="btns-payment">
-                            <form action="{{ route('payment.create') }}" method="GET">
+                            <form action="{{ route('payment.create') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="amount" value="{{ $item->amount }}">
                                 <input type="hidden" name="id" value="{{ $item->id }}">
@@ -229,6 +229,28 @@
         });
     });
     </script>
+
+    @if(session('failed'))
+
+        <script>
+            const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    text: '{{ session("failed") }}'
+                });
+
+        </script>
+    @endif
 
    @endpush
 </x-layouts.master>

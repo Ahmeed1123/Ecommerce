@@ -13,21 +13,25 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ( $payments as $payment )
+                @forelse ( $orders as $order )
                     <tr>
-                        <td>{{ $payment->id }}</td>
-                        <td>{{ $payment->payment_id }}</td>
-                        <td>{{ $payment->description }}</td>
-                        <td>{{ $payment->status }}</td>
-                        <td>{{ $payment->amount }}</td>
-                        <td>
-                            @if ($payment->item)
-                                <img class="h-auto" style="width:50px;" src="{{ asset('storage/items/'.$payment->item->image_url) }}" alt="" srcset="">
+                        <td class="text-center">{{ $order->id }}</td>
+                        @if ( $order->payment != null)
+                            <td class="text-center">{{ $order->payment->payment_id }}</td>
+                            <td class="text-center">{{ $order->payment->description }}</td>
+                            @else
+                            <td class="text-center" colspan="2">Payment has not been processed yet</td>
+                        @endif
+                        <td class="text-center">{{ $order->status }}</td>
+                        <td class="text-center">{{ $order->amount }}</td>
+                        <td class="text-center">
+                            @if ($order->item)
+                                <img class="h-auto" style="width:50px;" src="{{ asset('storage/items/'.$order->item->image_url) }}" alt="" srcset="">
                                 @else
                                 No Image
                             @endif
                         </td>
-                        <td>{{ $payment->created_at }}</td>
+                        <td class="text-center">{{ $order->created_at }}</td>
                     </tr>
                     @empty
                     <p>empty</p>
@@ -67,7 +71,6 @@
                     });
                     Toast.fire({
                         icon: "error",
-                        title: 'Oops...',
                         text: '{{ session("failed") }}'
                     });
 

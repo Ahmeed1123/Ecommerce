@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\itemRequest;
-use App\uploadImgTrait;
+use App\Trait\uploadImgTrait;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller

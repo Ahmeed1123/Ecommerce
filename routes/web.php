@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
-use App\Http\Controllers\pymentController;
+use App\Http\Controllers\paymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +14,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('item', ItemController::class)->middleware(['auth']);
 
 Route::group(['prefix' => 'payment' , 'middleware' => ['auth']], function () {
-    Route::get('/',  [pymentController::class , 'create'] )->name('payment.create');
-    Route::get('/procicing',  [pymentController::class , 'procicing'] )->name('payment.procicing');
-    Route::get('/index',  [pymentController::class , 'index'] )->name('payment.index');
+    Route::post('/',  [paymentController::class , 'create'] )->name('payment.create');
+    Route::get('/processPayment',  [paymentController::class , 'processPayment'] )->name('payment.processPayment');
+    Route::get('/index',  [paymentController::class , 'index'] )->name('payment.index');
 
 });

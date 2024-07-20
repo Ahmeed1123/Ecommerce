@@ -15,16 +15,16 @@
     <script>
         Moyasar.init({
             element: '.mysr-form',
-            amount: {{ $amount * 100 }},
+            amount: {{ $order->amount * 100 }},
             currency: 'SAR',
             language:'ar',
             metadata: {
-                'item_id': {{ $id }}
+                'order_id': {{ $order->id }}
             },
-            description: "charge for item {{ $title }} At a price {{ $amount }}SAR",
-            publishable_api_key: 'pk_test_FzHBMi7VomHk4P97Rp8NcFuBUeYNjyoQhXGTF5xx',
+            description: "charge for item {{ $title }} At a price {{ $order->amount }}SAR",
+            publishable_api_key: "{{ config('moyasar.key') }}",
             // publishable_api_key: '{{ config("moyasar.key") }}',
-            callback_url: "{{ route('payment.procicing') }}",
+            callback_url: "{{ route('payment.processPayment') }}",
             methods: ['creditcard'],
             fixed_width: true, // optional, only for demo purposes
         });

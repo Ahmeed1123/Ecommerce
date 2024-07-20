@@ -13,18 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
-
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')
-            ->references('id')
-            ->on('items')
-            ->onDelete('cascade');
-
+            $table->foreignId('item_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('payment_id')->nullable()->constrained();
+            $table->string('status')->nullable();
+            $table->decimal('amount', 18, 4)->nullable();
             $table->timestamps();
         });
     }
